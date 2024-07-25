@@ -5,9 +5,9 @@ import 'package:dartz/dartz.dart';
 abstract class AnimeRepository {
   
 
-  Future<Either<Failure, List<AnimeEntity>>> getTopRatedAnime();
+  Future<Either<Failure, List<AnimeEntity>>> getTopRatedAnime({int page = 1});
 
-  Future<Either<Failure, List<AnimeEntity>>> getPopularAnime();
+  Future<Either<Failure, List<AnimeEntity>>> getPopularAnime({int page = 1});
 
   Future<Either<Failure, List<AnimeEntity>>> getLatestAnime();
 
