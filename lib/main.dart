@@ -14,13 +14,13 @@ void main() async {
     (l) => print(l),
     (r) => print("Anime: ${r.first.title}\nRating: ${r.first.rating}"),
   );
-  var popularAnime = await getIt<GetPopularAnimeUsecase>().call();
+  var popularAnime = await getIt<GetPopularAnimeUsecase>().call(page: 2);
   print("popularAnime\n");
   popularAnime.fold(
     (l) => print(l),
     (r) => print("Anime: ${r.first.title}\nRating: ${r.first.rating}"),
   );
-  var topRatedAnime = await getIt<GetTopRatedAnimeUsecase>().call();
+  var topRatedAnime = await getIt<GetTopRatedAnimeUsecase>().call(page: 2);
   print("topRatedAnime\n");
   topRatedAnime.fold(
     (l) => print(l),

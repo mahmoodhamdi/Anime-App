@@ -10,7 +10,7 @@ class GetTopRatedAnimeUsecase {
     required this.animeRepository,
   });
 
-  Future<Either<Failure, List<AnimeEntity>>> call() async {
-    return await animeRepository.getTopRatedAnime();
+  Future<Either<Failure, List<AnimeEntity>>> call({int page = 1}) async {
+    return await animeRepository.getTopRatedAnime(page: page);
   }
 }
