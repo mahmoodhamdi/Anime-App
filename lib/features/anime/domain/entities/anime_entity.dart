@@ -1,18 +1,18 @@
 import 'package:equatable/equatable.dart';
 
 class AnimeEntity extends Equatable {
-  final int id;
+  final String id;
   final String title;
   final String imageUrl;
   final String coverImageUrl;
   final String description;
-  final String ranking;
+  final num ranking;
   final String rating;
   final String type;
   final String status;
-  final String episodesCount;
+  final num episodesCount;
   final String createdAt;
-  final String episodeLength;
+  final num episodeLength;
 
   const AnimeEntity(
       {required this.id,
