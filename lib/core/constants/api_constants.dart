@@ -1,5 +1,9 @@
-const baseAnimeUrl = 'https://kitsu.io/api/edge/anime';
-const baseMangaUrl = 'https://kitsu.io/api/edge/manga';
+const baseAnimeListUrl =
+    'https://kitsu.io/api/edge/anime?page%5Bnumber%5D=1&page%5Bsize%5D=20';
+const baseAnimeUrl = 'https://kitsu.io/api/edge/anime/';
+const baseMangaListUrl =
+    'https://kitsu.io/api/edge/manga?page%5Bnumber%5D=1&page%5Bsize%5D=20';
+const baseMangaUrl = 'https://kitsu.io/api/edge/manga/';
 const baseEpisodeUrl = 'https://kitsu.io/api/edge/episodes/';
 const popular = "&sort=popularityRank";
 const topRated = "&sort=ratingRank";
