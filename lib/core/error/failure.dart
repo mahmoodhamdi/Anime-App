@@ -6,7 +6,7 @@ abstract class Failure extends Equatable {
   final String? title;
   final String? detail;
   final String? code;
-  final String? status;
+  final int? status;
   final String? pointer;
   final String? parameter;
 

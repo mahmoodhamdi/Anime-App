@@ -18,17 +18,17 @@ class AnimeRemoteDataSourceImpl implements AnimeRemoteDataSource {
 
   @override
   Future<Either<Failure, List<AnimeModel>>> getTopRatedAnime() async {
-    return _fetchAnimeList("$baseAnimeUrl$topRated");
+    return _fetchAnimeList("$baseAnimeListUrl$topRated");
   }
 
   @override
   Future<Either<Failure, List<AnimeModel>>> getPopularAnime() async {
-    return _fetchAnimeList("$baseAnimeUrl$popular");
+    return _fetchAnimeList("$baseAnimeListUrl$popular");
   }
 
   @override
   Future<Either<Failure, List<AnimeModel>>> getLatestAnime() async {
-    return _fetchAnimeList("$baseAnimeUrl$latest");
+    return _fetchAnimeList("$baseAnimeListUrl$latest");
   }
 
   @override
@@ -36,7 +36,7 @@ class AnimeRemoteDataSourceImpl implements AnimeRemoteDataSource {
     try {
       final response = await _dio.get("$baseAnimeUrl$id");
       if (response.statusCode == 200) {
-        final anime = AnimeModel.fromJson(response.data['data'][0]);
+        final anime = AnimeModel.fromJson(response.data['data']);
         return Right(anime);
       } else {
         return Left(
@@ -53,7 +53,7 @@ class AnimeRemoteDataSourceImpl implements AnimeRemoteDataSource {
     try {
       final response = await _dio.get(url);
       if (response.statusCode == 200) {
-        final List<AnimeModel> animeList = (response.data['data'][0] as List)
+        final List<AnimeModel> animeList = (response.data['data'] as List)
             .map((json) => AnimeModel.fromJson(json))
             .toList();
         return Right(animeList);
