@@ -3,7 +3,7 @@ import 'package:anime_app/features/anime/domain/entities/anime_entity.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class AnimeRepository {
-  //anime list
+  
 
   Future<Either<Failure, List<AnimeEntity>>> getTopRatedAnime();
 

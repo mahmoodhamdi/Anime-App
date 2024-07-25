@@ -5,25 +5,25 @@ import 'package:anime_app/features/anime/domain/repository/anime_repository.dart
 import 'package:dartz/dartz.dart';
 
 class AnimeRepositoryImpl implements AnimeRepository {
-  final AnimeRemoteDataSource _animeRemoteDataSource;
-  AnimeRepositoryImpl(this._animeRemoteDataSource);
+  final AnimeRemoteDataSource animeRemoteDataSource;
+  AnimeRepositoryImpl({required this.animeRemoteDataSource});
   @override
   Future<Either<Failure, List<AnimeEntity>>> getTopRatedAnime() async {
-    return await _animeRemoteDataSource.getTopRatedAnime();
+    return await animeRemoteDataSource.getTopRatedAnime();
   }
 
   @override
   Future<Either<Failure, List<AnimeEntity>>> getPopularAnime() async {
-    return await _animeRemoteDataSource.getPopularAnime();
+    return await animeRemoteDataSource.getPopularAnime();
   }
 
   @override
   Future<Either<Failure, List<AnimeEntity>>> getLatestAnime() async {
-    return await _animeRemoteDataSource.getLatestAnime();
+    return await animeRemoteDataSource.getLatestAnime();
   }
 
   @override
   Future<Either<Failure, AnimeEntity>> getAnimeDetails(int id) async {
-    return await _animeRemoteDataSource.getAnimeDetails(id);
+    return await animeRemoteDataSource.getAnimeDetails(id);
   }
 }
