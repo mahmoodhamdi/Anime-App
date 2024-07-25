@@ -8,7 +8,7 @@ class GetPopularAnimeUsecase {
 
   GetPopularAnimeUsecase({required this.animeRepository});
 
-  Future<Either<Failure, List<AnimeEntity>>> call() async {
-    return await animeRepository.getPopularAnime();
+  Future<Either<Failure, List<AnimeEntity>>> call({int page = 1}) async {
+    return await animeRepository.getPopularAnime(page: page);
   }
 }

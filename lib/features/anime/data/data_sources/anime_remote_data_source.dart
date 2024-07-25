@@ -5,8 +5,8 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 abstract class AnimeRemoteDataSource {
-  Future<Either<Failure, List<AnimeModel>>> getTopRatedAnime();
-  Future<Either<Failure, List<AnimeModel>>> getPopularAnime();
+  Future<Either<Failure, List<AnimeModel>>> getTopRatedAnime({int page = 1});
+  Future<Either<Failure, List<AnimeModel>>> getPopularAnime({int page = 1});
   Future<Either<Failure, List<AnimeModel>>> getLatestAnime();
   Future<Either<Failure, AnimeModel>> getAnimeDetails(int id);
 }
@@ -17,18 +17,20 @@ class AnimeRemoteDataSourceImpl implements AnimeRemoteDataSource {
   AnimeRemoteDataSourceImpl({required Dio dio}) : _dio = dio;
 
   @override
-  Future<Either<Failure, List<AnimeModel>>> getTopRatedAnime() async {
-    return _fetchAnimeList("$baseAnimeListUrl$topRated");
+  Future<Either<Failure, List<AnimeModel>>> getTopRatedAnime(
+      {int page = 1}) async {
+    return _fetchAnimeList("$baseAnimeListUrl$page$topRated");
   }
 
   @override
-  Future<Either<Failure, List<AnimeModel>>> getPopularAnime() async {
-    return _fetchAnimeList("$baseAnimeListUrl$popular");
+  Future<Either<Failure, List<AnimeModel>>> getPopularAnime(
+      {int page = 1}) async {
+    return _fetchAnimeList("$baseAnimeListUrl$page$popular");
   }
 
   @override
   Future<Either<Failure, List<AnimeModel>>> getLatestAnime() async {
-    return _fetchAnimeList("$baseAnimeListUrl$latest");
+    return _fetchAnimeList("${baseAnimeListUrl}1$latest");
   }
 
   @override
