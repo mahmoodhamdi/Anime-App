@@ -4,11 +4,11 @@ import 'package:anime_app/features/anime/domain/repository/anime_repository.dart
 import 'package:dartz/dartz.dart';
 
 class GetPopularAnimeUsecase {
-  final AnimeRepository _animeRepository;
+  final AnimeRepository animeRepository;
 
-  GetPopularAnimeUsecase(this._animeRepository);
+  GetPopularAnimeUsecase({required this.animeRepository});
 
   Future<Either<Failure, List<AnimeEntity>>> call() async {
-    return await _animeRepository.getPopularAnime();
+    return await animeRepository.getPopularAnime();
   }
 }

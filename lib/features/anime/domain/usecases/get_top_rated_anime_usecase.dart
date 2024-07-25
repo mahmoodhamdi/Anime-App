@@ -6,7 +6,9 @@ import 'package:dartz/dartz.dart';
 class GetTopRatedAnimeUsecase {
   final AnimeRepository animeRepository;
 
-  GetTopRatedAnimeUsecase(this.animeRepository);
+  GetTopRatedAnimeUsecase({
+    required this.animeRepository,
+  });
 
   Future<Either<Failure, List<AnimeEntity>>> call() async {
     return await animeRepository.getTopRatedAnime();
