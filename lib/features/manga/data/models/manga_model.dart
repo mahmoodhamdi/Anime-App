@@ -21,7 +21,10 @@ class MangaModel extends MangaEntity {
 
     return MangaModel(
       id: json['id'] ?? '',
-      title: attributes['titles']?['en'] ?? 'Unknown Title',
+      title: attributes['titles']?['en'] ??
+          attributes['titles']?['en_jp'] ??
+          attributes['titles']?['en_us'] ??
+          'Unknown Title',
       imageUrl: attributes['posterImage']?['tiny'] ?? '',
       coverImageUrl: attributes['coverImage']?['tiny'] ?? '',
       description: attributes['description'] ?? 'No description available',
