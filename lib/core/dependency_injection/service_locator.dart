@@ -4,6 +4,7 @@ import 'package:anime_app/features/anime/domain/usecases/get_anime_details_useca
 import 'package:anime_app/features/anime/domain/usecases/get_latest_anime_usecase.dart';
 import 'package:anime_app/features/anime/domain/usecases/get_popular_anime_usecase.dart';
 import 'package:anime_app/features/anime/domain/usecases/get_top_rated_anime_usecase.dart';
+import 'package:anime_app/features/manga/data/data_sources/manga_remote_data_source.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
