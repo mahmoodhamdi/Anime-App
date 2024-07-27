@@ -10,7 +10,9 @@ class GetCharactersListUsecase {
     required this.characterRepository,
   });
 
-  Future<Either<Failure, CharacterEntity>> call({required int id}) async {
-    return await characterRepository.getCharacter(id: id);
+  Future<Either<Failure, List<CharacterEntity>>> call(
+      {required int animeId, int page = 1}) async {
+    return await characterRepository.getCharactersList(
+        animeId: animeId, page: page);
   }
 }
