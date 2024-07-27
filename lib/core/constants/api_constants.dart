@@ -8,3 +8,7 @@ const baseEpisodeUrl = 'https://kitsu.io/api/edge/episodes/';
 const popular = "&sort=popularityRank";
 const topRated = "&sort=ratingRank";
 const latest = "&sort=-createdAt";
+const characterById = "https://kitsu.io/api/edge/media-characters/";
+const afterCharacterId = "/characters";
+const characterByAnimeId = "https://kitsu.io/api/edge/anime/";
+const afterCharacterByAnimeId = "/characters?page%5Blimit%5D=20&page%5Boffset%5D=0&sort=role";
