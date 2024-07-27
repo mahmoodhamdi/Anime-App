@@ -3,6 +3,9 @@ import 'package:anime_app/features/characters/domain/entities/character_entity.d
 import 'package:dartz/dartz.dart';
 
 abstract class CharacterRepository {
-  Future<Either<Failure, List<CharacterEntity>>> getCharacters(
-      {required int page});
+  Future<Either<Failure, List<CharacterEntity>>> getCharactersList(
+      {required int animeId, required int page});
+
+  Future<Either<Failure, CharacterEntity>> getCharacter({required int id});
 }
+
