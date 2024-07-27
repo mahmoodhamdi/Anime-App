@@ -11,7 +11,7 @@ class GetCharactersListUsecase {
   });
 
   Future<Either<Failure, List<CharacterEntity>>> call(
-      {required int animeId, int page = 1}) async {
+      {required String animeId, int page = 1}) async {
     return await characterRepository.getCharactersList(
         animeId: animeId, page: page);
   }
