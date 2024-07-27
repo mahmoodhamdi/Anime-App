@@ -3,14 +3,14 @@ import 'package:anime_app/features/characters/domain/entities/character_entity.d
 import 'package:anime_app/features/characters/domain/repository/character_repository.dart';
 import 'package:dartz/dartz.dart';
 
-class GetCharactersListUsecase {
+class GetCharacterByIdUsecase {
   final CharacterRepository characterRepository;
 
-  GetCharactersListUsecase({
+  GetCharacterByIdUsecase({
     required this.characterRepository,
   });
 
-  Future<Either<Failure, CharacterEntity>> call({required int id}) async {
-    return await characterRepository.getCharacter(id: id);
+  Future<Either<Failure, CharacterEntity>> call({required String id}) async {
+    return await characterRepository.getCharacterById(id: id);
   }
 }
