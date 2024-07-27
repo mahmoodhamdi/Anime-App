@@ -4,6 +4,11 @@ import 'package:anime_app/features/anime/domain/usecases/get_anime_details_useca
 import 'package:anime_app/features/anime/domain/usecases/get_latest_anime_usecase.dart';
 import 'package:anime_app/features/anime/domain/usecases/get_popular_anime_usecase.dart';
 import 'package:anime_app/features/anime/domain/usecases/get_top_rated_anime_usecase.dart';
+import 'package:anime_app/features/characters/data/data_sources/character_remote_data_source.dart';
+import 'package:anime_app/features/characters/data/repository_impl/character_repository_impl.dart';
+import 'package:anime_app/features/characters/domain/usecases/get_character_by_id_usecase.dart';
+import 'package:anime_app/features/characters/domain/usecases/get_characters_list_usecase.dart';
+import 'package:anime_app/features/characters/domain/usecases/get_media_characters_list_usecase.dart';
 import 'package:anime_app/features/manga/data/data_sources/manga_remote_data_source.dart';
 import 'package:anime_app/features/manga/data/repository_impl/manga_repository_impl.dart';
 import 'package:anime_app/features/manga/domain/usecases/get_latest_manga_usecase.dart';
@@ -25,6 +30,9 @@ setupServiceLocator() {
   //datasource for manga
   getIt.registerSingleton<MangaRemoteDataSourceImpl>(
       MangaRemoteDataSourceImpl(dio: getIt<Dio>()));
+  //datasource for character
+  getIt.registerSingleton<CharacterRemoteDataSourceImpl>(
+      CharacterRemoteDataSourceImpl(dio: getIt<Dio>()));
 
   //repository for anime
   getIt.registerSingleton<AnimeRepositoryImpl>(AnimeRepositoryImpl(
@@ -32,6 +40,10 @@ setupServiceLocator() {
   //repository for manga
   getIt.registerSingleton<MangaRepositoryImpl>(MangaRepositoryImpl(
       mangaRemoteDataSource: getIt<MangaRemoteDataSourceImpl>()));
+  //repository for character
+  getIt.registerSingleton<CharacterRepositoryImpl>(CharacterRepositoryImpl(
+      characterRemoteDataSource: getIt<CharacterRemoteDataSourceImpl>()));
+
   //usecases for anime
   getIt.registerSingleton<GetTopRatedAnimeUsecase>(GetTopRatedAnimeUsecase(
     animeRepository: getIt<AnimeRepositoryImpl>(),
@@ -58,5 +70,17 @@ setupServiceLocator() {
   ));
   getIt.registerSingleton<GetMangaDetailsUsecase>(GetMangaDetailsUsecase(
     mangaRepository: getIt<MangaRepositoryImpl>(),
+  ));
+
+  //usecases for character
+  getIt.registerSingleton<GetCharacterByIdUsecase>(GetCharacterByIdUsecase(
+    characterRepository: getIt<CharacterRepositoryImpl>(),
+  ));
+  getIt.registerSingleton<GetCharactersListUsecase>(GetCharactersListUsecase(
+    characterRepository: getIt<CharacterRepositoryImpl>(),
+  ));
+  getIt.registerSingleton<GetMediaCharactersListUsecase>(
+      GetMediaCharactersListUsecase(
+    characterRepository: getIt<CharacterRepositoryImpl>(),
   ));
 }
