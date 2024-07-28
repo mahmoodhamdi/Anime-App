@@ -3,14 +3,14 @@ import 'package:anime_app/features/reviews/domain/entities/reviewer_entity.dart'
 import 'package:anime_app/features/reviews/domain/repository/review_repository.dart';
 import 'package:dartz/dartz.dart';
 
-class GetReviewerByIdUsecase {
+class GetReviewersListUsecase {
   final ReviewRepository reviewRepository;
 
-  GetReviewerByIdUsecase({
-    required this.reviewRepository,
-  });
+  GetReviewersListUsecase({required this.reviewRepository});
 
-  Future<Either<Failure, ReviewerEntity>> call({required String id}) async {
-    return await reviewRepository.getReviewer(id: id);
+  Future<Either<Failure, List<ReviewerEntity>>> call(
+      {required String animeId, int page = 1}) async {
+    return await reviewRepository.getReviewersList(
+        animeId: animeId, page: page);
   }
 }

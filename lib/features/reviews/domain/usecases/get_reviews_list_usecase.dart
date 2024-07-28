@@ -1,6 +1,6 @@
 import 'package:anime_app/core/error/failure.dart';
 import 'package:anime_app/features/reviews/domain/entities/review_entity.dart';
-import 'package:anime_app/features/reviews/domain/repository/character_repository.dart';
+import 'package:anime_app/features/reviews/domain/repository/review_repository.dart';
 import 'package:dartz/dartz.dart';
 
 class GetReviewsListUsecase {
@@ -12,6 +12,6 @@ class GetReviewsListUsecase {
 
   Future<Either<Failure, List<ReviewEntity>>> call(
       {required String animeId, int page = 1}) async {
-    return await reviewRepository.getReviews(animeId: animeId, page: page);
+    return await reviewRepository.getReviewsList(animeId: animeId, page: page);
   }
 }

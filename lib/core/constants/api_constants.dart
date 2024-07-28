@@ -12,8 +12,8 @@ const characterByAnimeId = "https://kitsu.io/api/edge/anime/";
 const afterCharacterByAnimeId =
     "/characters?page%5Blimit%5D=6&page%5Boffset%5D=1&sort=role";
 
-const reviewUserByReviewId = "https://kitsu.io/api/edge/reviews/";
-const afterReviewUserId = "/user";
+const reviewerByReviewId = "https://kitsu.io/api/edge/reviews/";
+const afterReviewerId = "/user";
 const reviewByAnimeId = "https://kitsu.io/api/edge/anime/";
 const afterReviewByAnimeId =
     "/reviews?page%5Blimit%5D=10&page%5Boffset%5D=0&sort=-likesCount";
