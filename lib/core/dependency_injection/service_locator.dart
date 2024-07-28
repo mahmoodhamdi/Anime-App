@@ -15,6 +15,11 @@ import 'package:anime_app/features/manga/domain/usecases/get_latest_manga_usecas
 import 'package:anime_app/features/manga/domain/usecases/get_manga_details_usecase.dart';
 import 'package:anime_app/features/manga/domain/usecases/get_popular_manga_usecase.dart';
 import 'package:anime_app/features/manga/domain/usecases/get_top_rated_manga_usecase.dart';
+import 'package:anime_app/features/reviews/data/data_sources/review_remote_data_source.dart';
+import 'package:anime_app/features/reviews/data/repository_impl/review_repository_impl.dart';
+import 'package:anime_app/features/reviews/domain/usecases/get_reviewer_by_id_usecase.dart';
+import 'package:anime_app/features/reviews/domain/usecases/get_reviewers_list_usecase.dart';
+import 'package:anime_app/features/reviews/domain/usecases/get_reviews_list_usecase.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -33,6 +38,9 @@ setupServiceLocator() {
   //datasource for character
   getIt.registerSingleton<CharacterRemoteDataSourceImpl>(
       CharacterRemoteDataSourceImpl(dio: getIt<Dio>()));
+  //datasource for review
+  getIt.registerSingleton<ReviewRemoteDataSourceImpl>(
+      ReviewRemoteDataSourceImpl(dio: getIt<Dio>()));
 
   //repository for anime
   getIt.registerSingleton<AnimeRepositoryImpl>(AnimeRepositoryImpl(
@@ -43,6 +51,9 @@ setupServiceLocator() {
   //repository for character
   getIt.registerSingleton<CharacterRepositoryImpl>(CharacterRepositoryImpl(
       characterRemoteDataSource: getIt<CharacterRemoteDataSourceImpl>()));
+  //repository for review
+  getIt.registerSingleton<ReviewRepositoryImpl>(ReviewRepositoryImpl(
+      reviewRemoteDataSource: getIt<ReviewRemoteDataSourceImpl>()));
 
   //usecases for anime
   getIt.registerSingleton<GetTopRatedAnimeUsecase>(GetTopRatedAnimeUsecase(
@@ -82,5 +93,18 @@ setupServiceLocator() {
   getIt.registerSingleton<GetMediaCharactersListUsecase>(
       GetMediaCharactersListUsecase(
     characterRepository: getIt<CharacterRepositoryImpl>(),
+  ));
+
+  //usecases for review
+  getIt.registerSingleton<GetReviewsListUsecase>(GetReviewsListUsecase(
+    reviewRepository: getIt<ReviewRepositoryImpl>(),
+  ));
+
+  getIt.registerSingleton<GetReviewerByIdUsecase>(GetReviewerByIdUsecase(
+    reviewRepository: getIt<ReviewRepositoryImpl>(),
+  ));
+
+  getIt.registerSingleton<GetReviewersListUsecase>(GetReviewersListUsecase(
+    reviewRepository: getIt<ReviewRepositoryImpl>(),
   ));
 }
