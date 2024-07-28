@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 void main() async {
   await setupServiceLocator();
+
   runApp(const MyApp());
 }
 
