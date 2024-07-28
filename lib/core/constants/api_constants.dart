@@ -20,3 +20,4 @@ const afterReviewByAnimeId =
 const categoryByAnimeId = "https://kitsu.io/api/edge/anime/";
 const afterCategoryAnimeId =
     "/categories?page%5Blimit%5D=20&page%5Boffset%5D=0";
+const categoryById = "https://kitsu.io/api/edge/categories/";
