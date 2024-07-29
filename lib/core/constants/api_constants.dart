@@ -10,7 +10,7 @@ const characterById = "https://kitsu.io/api/edge/media-characters/";
 const afterCharacterId = "/character";
 const characterByAnimeId = "https://kitsu.io/api/edge/anime/";
 const afterCharacterByAnimeId =
-    "/characters?page%5Blimit%5D=6&page%5Boffset%5D=1&sort=role";
+    "/characters?page%5Blimit%5D=6&page%5Boffset%5D=0&sort=role";
 
 const reviewerByReviewId = "https://kitsu.io/api/edge/reviews/";
 const afterReviewerId = "/user";
