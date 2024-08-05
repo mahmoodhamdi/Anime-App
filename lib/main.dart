@@ -1,6 +1,6 @@
+import 'package:anime_app/core/constants/app_colors.dart';
 import 'package:anime_app/core/dependency_injection/service_locator.dart';
 import 'package:anime_app/core/themes/app_theme/app_theme.dart';
-import 'package:anime_app/features/anime/presentation/views/anime_view.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -18,7 +18,16 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appTheme,
       title: 'Anime App',
-      home: const AnimeView(),
+      home: Scaffold(
+        backgroundColor: AppColors.primary400,
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/Background.png'),
+                fit: BoxFit.cover),
+          ),
+        ),
+      ),
     );
   }
 }
