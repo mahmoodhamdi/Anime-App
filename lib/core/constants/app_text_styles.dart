@@ -68,6 +68,8 @@ class AppTextStyles {
   static const TextStyle link = TextStyle(
     fontFamily: 'Poppins',
     fontSize: 16.0, // 24px -> 16.0 in Flutter for regular link text
-    fontWeight: FontWeight.w600, // SemiBold
+    fontWeight: FontWeight.normal, // SemiBold
   );
+
+
 }
