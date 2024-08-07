@@ -7,7 +7,7 @@ import 'package:dio/dio.dart';
 abstract class AnimeRemoteDataSource {
   Future<Either<Failure, List<AnimeModel>>> getTopRatedAnime({int page = 1});
   Future<Either<Failure, List<AnimeModel>>> getPopularAnime({int page = 1});
-  Future<Either<Failure, List<AnimeModel>>> getLatestAnime();
+  Future<Either<Failure, List<AnimeModel>>> getLatestAnime({int page = 1});
   Future<Either<Failure, AnimeModel>> getAnimeDetails(int id);
 }
 
@@ -29,8 +29,10 @@ class AnimeRemoteDataSourceImpl implements AnimeRemoteDataSource {
   }
 
   @override
-  Future<Either<Failure, List<AnimeModel>>> getLatestAnime() async {
-    return _fetchAnimeList("${baseAnimeListUrl}1$latest");
+  Future<Either<Failure, List<AnimeModel>>> getLatestAnime(
+      {int page = 1}) async {
+    return _fetchAnimeList(
+        "https://kitsu.io/api/edge/anime?page%5Bnumber%5D=$page&page%5Bsize%5D=20&sort=-createdAt");
   }
 
   @override

@@ -30,7 +30,8 @@ class MangaRemoteDataSourceImpl implements MangaRemoteDataSource {
 
   @override
   Future<Either<Failure, List<MangaModel>>> getLatestManga() async {
-    return _fetchMangaList("${baseMangaListUrl}1$latest");
+    return _fetchMangaList(
+        "https://kitsu.io/api/edge/manga?page%5Blimit%5D=10&page%5Boffset%5D=0&sort=-createdAt");
   }
 
   @override

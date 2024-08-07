@@ -22,7 +22,8 @@ class AnimeBloc extends Bloc<AnimeEvent, AnimeState> {
 
     on<GetLatestAnimeEvent>((event, emit) async {
       emit(AnimeLoading());
-      final result = await getIt<GetLatestAnimeUsecase>().call();
+      final result =
+          await getIt<GetLatestAnimeUsecase>().call(page: event.page);
       result.fold((l) => emit(AnimeError(l)), (r) => emit(AnimeLoaded(r)));
     });
 
