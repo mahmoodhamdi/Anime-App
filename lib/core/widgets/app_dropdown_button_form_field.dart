@@ -10,6 +10,7 @@ class AppDropdownButtonFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
+      isExpanded: true,
       value: "Latest Episodes",
       onChanged: (String? newValue) {},
 
