@@ -35,10 +35,12 @@ class AnimeCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Positioned(
+                  Positioned(
                     left: 4,
                     top: 8,
-                    child: RatingCard(),
+                    child: RatingCard(
+                      rating: anime.rating,
+                    ),
                   ),
                 ],
               ),
@@ -49,6 +51,8 @@ class AnimeCard extends StatelessWidget {
                 fit: BoxFit.scaleDown,
                 child: Text(
                   anime.title,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.link.copyWith(color: AppColors.grey50),
                 ),
               ),
