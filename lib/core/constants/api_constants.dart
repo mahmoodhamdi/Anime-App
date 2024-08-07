@@ -5,7 +5,6 @@ const baseMangaUrl = 'https://kitsu.io/api/edge/manga/';
 const baseEpisodeUrl = 'https://kitsu.io/api/edge/episodes/';
 const popular = "&sort=popularityRank";
 const topRated = "&sort=ratingRank";
-const latest = "&sort=-createdAt";
 const characterById = "https://kitsu.io/api/edge/media-characters/";
 const afterCharacterId = "/character";
 const characterByAnimeId = "https://kitsu.io/api/edge/anime/";

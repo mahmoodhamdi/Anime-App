@@ -1,6 +1,9 @@
 import 'package:anime_app/core/constants/app_colors.dart';
 import 'package:anime_app/core/constants/app_text_styles.dart';
+import 'package:anime_app/features/anime/presentation/controller/anime_bloc.dart';
+import 'package:anime_app/features/anime/presentation/controller/anime_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppDropdownButtonFormField extends StatelessWidget {
   const AppDropdownButtonFormField({
@@ -12,7 +15,15 @@ class AppDropdownButtonFormField extends StatelessWidget {
     return DropdownButtonFormField<String>(
       isExpanded: true,
       value: "Latest Episodes",
-      onChanged: (String? newValue) {},
+      onChanged: (String? newValue) {
+        if (newValue == "Latest Episodes") {
+          context.read<AnimeBloc>().add(const GetLatestAnimeEvent(page: 1));
+        } else if (newValue == "Popular") {
+          context.read<AnimeBloc>().add(const GetPopularAnimeEvent());
+        } else if (newValue == "Top Rated") {
+          context.read<AnimeBloc>().add(const GetTopRatedAnimeEvent());
+        }
+      },
 
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),

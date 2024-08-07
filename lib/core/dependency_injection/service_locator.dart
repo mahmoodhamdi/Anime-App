@@ -4,6 +4,7 @@ import 'package:anime_app/features/anime/domain/usecases/get_anime_details_useca
 import 'package:anime_app/features/anime/domain/usecases/get_latest_anime_usecase.dart';
 import 'package:anime_app/features/anime/domain/usecases/get_popular_anime_usecase.dart';
 import 'package:anime_app/features/anime/domain/usecases/get_top_rated_anime_usecase.dart';
+import 'package:anime_app/features/anime/presentation/controller/anime_bloc.dart';
 import 'package:anime_app/features/categories/data/data_sources/category_remote_data_source.dart';
 import 'package:anime_app/features/categories/data/repository_impl/category_repository_impl.dart';
 import 'package:anime_app/features/categories/domain/usecases/get_categories_list_usecase.dart';
@@ -125,4 +126,7 @@ setupServiceLocator() {
   getIt.registerSingleton<GetCategoryByIdUsecase>(GetCategoryByIdUsecase(
     categoryRepository: getIt<CategoryRepositoryImpl>(),
   ));
+
+  //bloc
+  getIt.registerSingleton<AnimeBloc>(AnimeBloc());
 }
