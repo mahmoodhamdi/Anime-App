@@ -20,8 +20,8 @@ class AnimeRepositoryImpl implements AnimeRepository {
   }
 
   @override
-  Future<Either<Failure, List<AnimeEntity>>> getLatestAnime() async {
-    return await animeRemoteDataSource.getLatestAnime();
+  Future<Either<Failure, List<AnimeEntity>>> getLatestAnime({int page = 1}) async {
+    return await animeRemoteDataSource.getLatestAnime(page: page);
   }
 
   @override

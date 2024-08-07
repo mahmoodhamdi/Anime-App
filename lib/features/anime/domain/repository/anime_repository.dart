@@ -9,7 +9,7 @@ abstract class AnimeRepository {
 
   Future<Either<Failure, List<AnimeEntity>>> getPopularAnime({int page = 1});
 
-  Future<Either<Failure, List<AnimeEntity>>> getLatestAnime();
+  Future<Either<Failure, List<AnimeEntity>>> getLatestAnime({int page = 1});
 
   Future<Either<Failure, AnimeEntity>> getAnimeDetails(int id);
 }

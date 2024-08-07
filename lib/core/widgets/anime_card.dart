@@ -1,11 +1,13 @@
 import 'package:anime_app/core/constants/app_colors.dart';
 import 'package:anime_app/core/constants/app_text_styles.dart';
 import 'package:anime_app/core/widgets/rating_card.dart';
+import 'package:anime_app/features/anime/domain/entities/anime_entity.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class AnimeCard extends StatelessWidget {
-  const AnimeCard({super.key});
-
+  const AnimeCard({super.key, required this.anime});
+  final AnimeEntity anime;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,8 +29,8 @@ class AnimeCard extends StatelessWidget {
                   Positioned.fill(
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
-                      child: Image.asset(
-                        "assets/images/small.jpg",
+                      child: CachedNetworkImage(
+                        imageUrl: anime.imageUrl,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -46,7 +48,7 @@ class AnimeCard extends StatelessWidget {
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  'Shang Chi',
+                  anime.title,
                   style: AppTextStyles.link.copyWith(color: AppColors.grey50),
                 ),
               ),
