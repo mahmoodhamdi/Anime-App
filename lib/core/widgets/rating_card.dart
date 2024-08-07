@@ -3,8 +3,8 @@ import 'package:anime_app/core/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class RatingCard extends StatelessWidget {
-  const RatingCard({super.key});
-
+  const RatingCard({super.key, required this.rating});
+  final String rating;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,7 +23,7 @@ class RatingCard extends StatelessWidget {
             ),
             const SizedBox(width: 4),
             Text(
-              '4.5',
+              rating,
               style: AppTextStyles.bodyRegular
                   .copyWith(color: AppColors.warning500),
             ),
