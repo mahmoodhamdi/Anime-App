@@ -22,8 +22,8 @@ class AnimeModel extends AnimeEntity {
     return AnimeModel(
       id: json['id'] ?? '',
       title: attributes['titles']?['en'] ?? 'Unknown Title',
-      imageUrl: attributes['posterImage']?['tiny'] ?? '',
-      coverImageUrl: attributes['coverImage']?['tiny'] ?? '',
+      imageUrl: attributes['posterImage']?['original'] ?? '',
+      coverImageUrl: attributes['coverImage']?['original'] ?? '',
       description: attributes['description'] ?? 'No description available',
       rating: attributes['averageRating'] ?? '0.0',
       status: attributes['status'] ?? 'Unknown',
