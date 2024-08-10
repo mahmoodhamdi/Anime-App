@@ -1,3 +1,4 @@
+import 'package:anime_app/core/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class AnimeTitleContainer extends StatelessWidget {
@@ -19,17 +20,7 @@ class AnimeTitleContainer extends StatelessWidget {
             ),
           ),
           child: Center(
-            child: Text(
-              animeTitle,
-              style: const TextStyle(
-                color: Color(0xFFEBEEF5),
-                fontSize: 32,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w600,
-                height: 0.04,
-                letterSpacing: -0.64,
-              ),
-            ),
+            child: Text(animeTitle, style: AppTextStyles.heading2),
           ),
         ),
       ],
