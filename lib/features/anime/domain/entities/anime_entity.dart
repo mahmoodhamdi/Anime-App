@@ -12,7 +12,8 @@ class AnimeEntity extends Equatable {
   final String status;
   final num episodesCount;
   final String createdAt;
-  final num episodeLength;
+  final num totalLength;
+  final String ageRatingGuide;
 
   const AnimeEntity(
       {required this.id,
@@ -26,7 +27,9 @@ class AnimeEntity extends Equatable {
       required this.status,
       required this.episodesCount,
       required this.createdAt,
-      required this.episodeLength});
+      required this.totalLength
+      ,
+      required this.ageRatingGuide});
 
   @override
   List<Object?> get props => [
@@ -40,7 +43,7 @@ class AnimeEntity extends Equatable {
         status,
         episodesCount,
         createdAt,
-        episodeLength,
+        totalLength,
         coverImageUrl
       ];
 }
