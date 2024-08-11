@@ -9,11 +9,12 @@ class AnimeModel extends AnimeEntity {
     required super.rating,
     required super.status,
     required super.createdAt,
-    required super.episodeLength,
+    required super.totalLength,
     required super.episodesCount,
     required super.ranking,
     required super.coverImageUrl,
     required super.type,
+    required super.ageRatingGuide,
   });
 
   factory AnimeModel.fromJson(Map<String, dynamic> json) {
@@ -27,11 +28,12 @@ class AnimeModel extends AnimeEntity {
       description: attributes['description'] ?? 'No description available',
       rating: attributes['averageRating'] ?? '0.0',
       status: attributes['status'] ?? 'Unknown',
-      createdAt: attributes['createdAt'] ?? '',
-      episodeLength: attributes['episodeLength'] ?? 0,
+      createdAt: attributes['createdAt'].toString().substring(0, 10),
+      totalLength: attributes['totalLength'] ?? 0,
       episodesCount: attributes['episodeCount'] ?? 0,
       ranking: attributes['popularityRank'] ?? 0,
       type: attributes['subtype'] ?? 'Unknown',
+      ageRatingGuide:attributes['ageRatingGuide'] ?? 'Unknown',
     );
   }
 }
