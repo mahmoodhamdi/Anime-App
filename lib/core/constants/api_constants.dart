@@ -1,4 +1,4 @@
-const baseAnimeListUrl = 'https://kitsu.io/api/edge/anime?page%5Bnumber%5D=';
+const baseAnimeListUrl = 'https://kitsu.io/api/edge/anime?page%5Bsize%5D=20&page%5Bnumber%5D=';
 const baseAnimeUrl = 'https://kitsu.io/api/edge/anime/';
 const baseMangaListUrl = 'https://kitsu.io/api/edge/manga?page%5Bnumber%5D=';
 const baseMangaUrl = 'https://kitsu.io/api/edge/manga/';
