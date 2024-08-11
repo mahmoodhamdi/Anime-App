@@ -15,6 +15,7 @@ class AnimeModel extends AnimeEntity {
     required super.coverImageUrl,
     required super.type,
     required super.ageRatingGuide,
+    required super.episodeLength,
   });
 
   factory AnimeModel.fromJson(Map<String, dynamic> json) {
@@ -31,6 +32,7 @@ class AnimeModel extends AnimeEntity {
       createdAt: attributes['createdAt'].toString().substring(0, 10),
       totalLength: attributes['totalLength'] ?? 0,
       episodesCount: attributes['episodeCount'] ?? 0,
+      episodeLength: attributes['episodeLength'] ?? 0,
       ranking: attributes['popularityRank'] ?? 0,
       type: attributes['subtype'] ?? 'Unknown',
       ageRatingGuide:attributes['ageRatingGuide'] ?? 'Unknown',

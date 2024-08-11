@@ -1,3 +1,5 @@
+import 'package:anime_app/core/constants/app_colors.dart';
+import 'package:anime_app/core/constants/app_text_styles.dart';
 import 'package:anime_app/core/widgets/anime_cover_container.dart';
 import 'package:anime_app/core/widgets/anime_title_container.dart';
 import 'package:anime_app/core/widgets/app_scaffold.dart';
@@ -21,7 +23,9 @@ class AnimeDetails extends StatelessWidget {
                 clipBehavior: Clip.none,
                 children: [
                   AnimeCoverContainer(
-                    coverImageUrl: anime.coverImageUrl,
+                    coverImageUrl: anime.coverImageUrl == ""
+                        ? anime.imageUrl
+                        : anime.coverImageUrl,
                   ),
                   Positioned(
                     top: 400,
@@ -40,10 +44,7 @@ class AnimeDetails extends StatelessWidget {
                     height: 720,
                     decoration: ShapeDecoration(
                       image: DecorationImage(
-                        image: CachedNetworkImageProvider(
-                            anime.coverImageUrl == ""
-                                ? anime.imageUrl
-                                : anime.coverImageUrl),
+                        image: CachedNetworkImageProvider(anime.imageUrl),
                         fit: BoxFit.cover,
                       ),
                       shape: RoundedRectangleBorder(
@@ -53,117 +54,213 @@ class AnimeDetails extends StatelessWidget {
                   ),
                   const SizedBox(width: 24),
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          anime.title,
-                          style: const TextStyle(
-                            color: Color(0xFFEBEEF5),
-                            fontSize: 24,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w700,
+                    child: Container(
+                      padding: const EdgeInsets.all(24),
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(24)),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            anime.title,
+                            style: AppTextStyles.heading4.copyWith(
+                              color: AppColors.grey50,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 24),
-                        Text(
-                          anime.description,
-                          maxLines: 6,
-                          style: const TextStyle(
-                            color: Color(0xFF8D95A9),
-                            fontSize: 20,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
+                          const SizedBox(height: 24),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Text(
+                              anime.description,
+                              textAlign: TextAlign.justify,
+                              maxLines: 9,
+                              overflow: TextOverflow.ellipsis,
+                              style: AppTextStyles.bodyLarge.copyWith(
+                                color: AppColors.grey300,
+                              ),
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 24),
-                        RatingCard(rating: anime.rating),
-                        const SizedBox(height: 24),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Column(
+                          const SizedBox(height: 24),
+                          RatingCard(rating: anime.rating.toString()),
+                          const SizedBox(height: 24),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  'Release Date:',
-                                  style: TextStyle(
-                                    color: Color(0xFF767E94),
-                                    fontSize: 16,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w400,
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Type',
+                                          style: AppTextStyles.bodyRegular
+                                              .copyWith(
+                                            color: AppColors.grey400,
+                                          )),
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        anime.type,
+                                        style: AppTextStyles.bodyLarge.copyWith(
+                                          color: AppColors.grey100,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  anime.createdAt,
-                                  style: const TextStyle(
-                                    color: Color(0xFFC3C8D4),
-                                    fontSize: 20,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w400,
+                                const SizedBox(width: 24),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Status',
+                                          style: AppTextStyles.bodyRegular
+                                              .copyWith(
+                                            color: AppColors.grey400,
+                                          )),
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        anime.status,
+                                        style: AppTextStyles.bodyLarge.copyWith(
+                                          color: AppColors.grey100,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
                             ),
-                            const SizedBox(width: 24),
-                            
-                            Column(
+                          ),
+                          const SizedBox(height: 24),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  'Rank',
-                                  style: TextStyle(
-                                    color: Color(0xFF767E94),
-                                    fontSize: 16,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w400,
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'First air date',
+                                        style:
+                                            AppTextStyles.bodyRegular.copyWith(
+                                          color: AppColors.grey400,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      Text(anime.createdAt,
+                                          style:
+                                              AppTextStyles.bodyLarge.copyWith(
+                                            color: AppColors.grey100,
+                                          )),
+                                    ],
                                   ),
                                 ),
-
-                                const SizedBox(height: 8),
-                                Text(
-                                  '${anime.ranking}',
-                                  style: const TextStyle(
-                                    color: Color(0xFFC3C8D4),
-                                    fontSize: 20,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w400,
+                                const SizedBox(width: 24),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Age Rating',
+                                          style: AppTextStyles.bodyRegular
+                                              .copyWith(
+                                            color: AppColors.grey400,
+                                          )),
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        anime.ageRatingGuide,
+                                        style: AppTextStyles.bodyLarge.copyWith(
+                                          color: AppColors.grey100,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
                             ),
-                          ],
-                        ),
-                        const SizedBox(height: 24),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Column(
+                          ),
+                          const SizedBox(height: 24),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  'No. of episodes',
-                                  style: TextStyle(
-                                    color: Color(0xFF767E94),
-                                    fontSize: 16,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w400,
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('No. of Episodes',
+                                          style: AppTextStyles.bodyRegular
+                                              .copyWith(
+                                            color: AppColors.grey400,
+                                          )),
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        anime.episodesCount.toString(),
+                                        style: AppTextStyles.bodyLarge.copyWith(
+                                          color: AppColors.grey100,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  '${anime.episodesCount}',
-                                  style: const TextStyle(
-                                    color: Color(0xFFC3C8D4),
-                                    fontSize: 20,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w400,
+                                const SizedBox(width: 24),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Episode Duration',
+                                        style: AppTextStyles.bodyRegular
+                                            .copyWith(color: AppColors.grey400),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        "${anime.episodeLength.toString()} Minutes",
+                                        style: AppTextStyles.bodyLarge
+                                            .copyWith(color: AppColors.grey100),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
                             ),
-                            const SizedBox(width: 24),
-                            Column(children: [
+                          ),
+                          const SizedBox(height: 24),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
                               const Text(
-                                'Duration',
+                                'Rank',
                                 style: TextStyle(
                                   color: Color(0xFF767E94),
                                   fontSize: 16,
@@ -172,38 +269,46 @@ class AnimeDetails extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(height: 8),
-                              Text('${anime.totalLength} min',
-                                  style: const TextStyle(
-                                    color: Color(0xFFC3C8D4),
-                                    fontSize: 20,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w400,
-                                  ))
-                            ])
-                          ],
-                        ),
-                        const SizedBox(height: 24),
-                        const SizedBox(height: 24),
-                        const Text(
-                          'Genres',
-                          style: TextStyle(
-                            color: Color(0xFF767E94),
-                            fontSize: 16,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
+                              Text(
+                                anime.ranking.toString(),
+                                style: const TextStyle(
+                                  color: Color(0xFFC3C8D4),
+                                  fontSize: 20,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        const SizedBox(height: 8),
-                        const Text(
-                          'Adventure,  Science Fiction, Action',
-                          style: TextStyle(
-                            color: Color(0xFFC3C8D4),
-                            fontSize: 20,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
+                          const SizedBox(height: 24),
+                          const Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Genres',
+                                style: TextStyle(
+                                  color: Color(0xFF767E94),
+                                  fontSize: 16,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              SizedBox(height: 8),
+                              Text(
+                                'Action & Adventure, Sci-Fi & Fantasy, Drama',
+                                style: TextStyle(
+                                  color: Color(0xFFC3C8D4),
+                                  fontSize: 20,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
                           ),
-                        )
-                      ],
+                        ],
+                      ),
                     ),
                   )
                 ],
