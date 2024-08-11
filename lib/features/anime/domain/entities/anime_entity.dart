@@ -14,9 +14,11 @@ class AnimeEntity extends Equatable {
   final String createdAt;
   final num totalLength;
   final String ageRatingGuide;
+  final num episodeLength;
 
   const AnimeEntity(
       {required this.id,
+      required this.episodeLength,
       required this.title,
       required this.coverImageUrl,
       required this.imageUrl,
@@ -27,8 +29,7 @@ class AnimeEntity extends Equatable {
       required this.status,
       required this.episodesCount,
       required this.createdAt,
-      required this.totalLength
-      ,
+      required this.totalLength,
       required this.ageRatingGuide});
 
   @override
@@ -40,6 +41,8 @@ class AnimeEntity extends Equatable {
         ranking,
         rating,
         type,
+        ageRatingGuide,
+        episodeLength,
         status,
         episodesCount,
         createdAt,
